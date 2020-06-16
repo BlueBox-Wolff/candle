@@ -1,0 +1,45 @@
+defaultTasks 'clean', 'build', 'test', 'jar'
+
+allprojects {
+    def major = 1
+    def minor = 0
+    def patch = 0
+
+    group 'de.bluebox.wolff'
+    version "${major}.${minor}.${patch}"
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'java-gradle-plugin'
+}
+
+subprojects {
+    repositories() {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        implementation 'com.google.code.findbugs:jsr305:3.0.2'
+
+        testImplementation 'junit:junit:4.13'
+    }
+
+    sourceCompatibility = 8
+    targetCompatibility = 8
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allJava
+        archiveClassifier.set('sources')
+    }
+}
+
+idea.module.inheritOutputDirs = true
