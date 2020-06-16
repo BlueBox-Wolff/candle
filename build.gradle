@@ -1,4 +1,4 @@
-defaultTasks 'clean', 'build', 'test', 'jar'
+defaultTasks 'clean', 'build'
 
 allprojects {
     def major = 1
