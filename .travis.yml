@@ -1,19 +1,24 @@
 language: java
-sudo: true
 install: true
 
 os:
   - linux
-
+  
 dist: xenial
 
 jdk:
   - openjdk8
+  - openjdk9
+  - openjdk10
   - openjdk11
   - openjdk13
   - openjdk14
-  - oraclejdk11
-  
+  - openjdk-ea
+
+jobs:
+  allow_failures:
+    - jdk: openjdk-ea
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/

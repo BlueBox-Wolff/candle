@@ -47,10 +47,8 @@ public abstract class LazyIterator<E> implements Iterator<E> {
     return this.next;
   }
 
-  @Nullable
-  protected final E endOfData() {
+  protected final void endOfData() {
     this.state = State.DONE;
-    return null;
   }
 
   protected enum State {
