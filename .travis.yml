@@ -1,24 +1,22 @@
 language: java
 install: true
 
+os:
+  - linux
+  - osx
+  
+dist: xenial
+
 jdk:
-  - oraclejdk7
-  - oraclejdk8
-  - oraclejdk9
-  - oraclejdk10
-  - oraclejdk11
-  - oraclejdk-ea
+  - openjdk8
+  - openjdk9
+  - openjdk10
+  - openjdk11
+  - openjdk-ea
 
 matrix:
   allow_failures:
-    - jdk: oraclejdk-ea
-    
-  include:
-    - os: linux
-      dist: xenial
-      
-    - os: osx
-      osx_image: xcode11.6
+    - jdk: openjdk-ea
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
