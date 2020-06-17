@@ -1,11 +1,10 @@
 language: java
-sudo: true
 install: true
 
 os:
   - linux
-
-dist: xenial
+  - windows
+  - osx
 
 jdk:
   - openjdk8
