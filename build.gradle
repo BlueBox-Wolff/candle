@@ -1,13 +1,3 @@
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath 'me.kolek.gradle:gradle-coveralls-plugin:1.0.0'
-  }
-}
-
 plugins {
   id 'java'
   id 'idea'
