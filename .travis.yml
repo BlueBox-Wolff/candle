@@ -11,6 +11,8 @@ jdk:
   - openjdk9
   - openjdk10
   - openjdk11
+  - openjdk13
+  - openjdk14
   - openjdk-ea
 
 jobs:
