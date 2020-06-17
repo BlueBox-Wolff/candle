@@ -3,6 +3,7 @@ package de.bluebox.wolff.candle.collection;
 import de.bluebox.wolff.candle.Assert;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,5 +36,13 @@ public final class Lists {
     Collections.addAll(list, elements);
     assert list.size() == elements.length;
     return list;
+  }
+
+  public static <E> List<E> retainAll(Collection<E> collection, Collection<?> retain) {
+    return collection.stream()
+        .filter(retain::contains)
+        .collect(
+            Collectors.toCollection(
+                () -> new ArrayList<>(Math.min(collection.size(), retain.size()))));
   }
 }
