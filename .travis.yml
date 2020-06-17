@@ -1,20 +1,25 @@
 language: java
 install: true
 
-os:
-  - linux
-  - windows
-  - osx
-  
-dist: xenial
-
 jdk:
-  - openjdk8
-  - openjdk11
-  - openjdk13
-  - openjdk14
+  - oraclejdk7
+  - oraclejdk8
+  - oraclejdk9
+  - oraclejdk10
   - oraclejdk11
-  
+  - oraclejdk-ea
+
+matrix:
+  allow_failures:
+    - jdk: oraclejdk-ea
+    
+  include:
+    - os: linux
+      dist: xenial
+      
+    - os: osx
+      osx_image: xcode11.6
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
