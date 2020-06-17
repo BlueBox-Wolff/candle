@@ -5,6 +5,8 @@ os:
   - linux
   - windows
   - osx
+  
+dist: xenial
 
 jdk:
   - openjdk8
