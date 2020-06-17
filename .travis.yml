@@ -3,7 +3,6 @@ install: true
 
 os:
   - linux
-  - osx
   
 dist: xenial
 
@@ -14,7 +13,7 @@ jdk:
   - openjdk11
   - openjdk-ea
 
-matrix:
+jobs:
   allow_failures:
     - jdk: openjdk-ea
 
