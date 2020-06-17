@@ -1,3 +1,21 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath 'me.kolek.gradle:gradle-coveralls-plugin:1.0.0'
+  }
+}
+
+plugins {
+  id 'java'
+  id 'idea'
+  id 'java-gradle-plugin'
+  id 'jacoco'
+  id 'com.github.kt3k.coveralls' version '2.10.1'
+}
+
 defaultTasks 'clean', 'build'
 
 def major = 1
@@ -7,35 +25,42 @@ def patch = 0
 group 'de.bluebox.wolff'
 version "${major}.${minor}.${patch}"
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'java-gradle-plugin'
-
 repositories() {
-    mavenCentral()
-    jcenter()
+  mavenCentral()
+  jcenter()
 }
 
 dependencies {
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+  implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
-    testImplementation 'junit:junit:4.13'
+  testImplementation 'junit:junit:4.13'
 }
 
 sourceCompatibility = 8
 targetCompatibility = 8
 
 compileJava {
-    options.encoding = 'UTF-8'
+  options.encoding = 'UTF-8'
 }
 
 compileTestJava {
-    options.encoding = 'UTF-8'
+  options.encoding = 'UTF-8'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled = true
+    html.enabled = true
+  }
+}
+
+coveralls {
+  jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
 }
 
 task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
-    archiveClassifier.set('sources')
+  from sourceSets.main.allJava
+  archiveClassifier.set('sources')
 }
 
 idea.module.inheritOutputDirs = true
