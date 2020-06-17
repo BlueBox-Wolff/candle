@@ -1,6 +1,6 @@
 name: Java CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with gradlew
-        run: ./gradlew build
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.1.1
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+         github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
