@@ -15,7 +15,7 @@ public class SettableFuture<V> implements RunnableFuture<V> {
   private Throwable throwable;
   private volatile boolean done;
 
-  private SettableFuture() {}
+  protected SettableFuture() {}
 
   public synchronized void set(V value) {
     this.value = value;
@@ -116,5 +116,9 @@ public class SettableFuture<V> implements RunnableFuture<V> {
         .add("throwable=" + this.throwable)
         .add("done=" + this.done)
         .toString();
+  }
+
+  public static <V> SettableFuture<V> create() {
+    return new SettableFuture<>();
   }
 }
