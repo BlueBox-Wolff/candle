@@ -1,23 +1,18 @@
 language: java
+sudo: true
 install: true
 
 os:
   - linux
-  
+
 dist: xenial
 
 jdk:
   - openjdk8
-  - openjdk9
-  - openjdk10
   - openjdk11
   - openjdk13
   - openjdk14
-  - openjdk-ea
-
-jobs:
-  allow_failures:
-    - jdk: openjdk-ea
+  - oraclejdk11
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -34,4 +29,4 @@ script:
   - ./gradlew check --rerun-tasks
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew pitest coveralls
