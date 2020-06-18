@@ -1,13 +1,3 @@
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath "net.saliman:gradle-cobertura-plugin:3.0.0"
-  }
-}
-
 plugins {
   id 'java'
   id 'idea'
@@ -48,8 +38,10 @@ compileTestJava {
 }
 
 pitest {
-  timestampedReports = false
+  targetClasses = ['de.bluebox.wolff.candle.*']
+  threads = 4
   outputFormats = ['XML']
+  timestampedReports = false
 }
 
 task sourcesJar(type: Jar) {
