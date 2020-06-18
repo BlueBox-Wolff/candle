@@ -3,7 +3,7 @@ plugins {
   id 'idea'
   id 'java-gradle-plugin'
   id 'jacoco'
-  id 'com.github.kt3k.coveralls' version '2.10.1'
+  id 'com.github.kt3k.coveralls' version "2.10.1"
 }
 
 defaultTasks 'clean', 'build'
