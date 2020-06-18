@@ -34,4 +34,4 @@ script:
   - ./gradlew check --rerun-tasks
 
 after_success:
-  - ./gradlew pitest coveralls
+  - ./gradlew jacocoTestReport coveralls
