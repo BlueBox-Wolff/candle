@@ -39,8 +39,8 @@ compileTestJava {
 
 jacocoTestReport {
   reports {
-    xml.enabled true
-    xml.destination = file("build/jacocoTestReport.xml")
+    xml.enabled = true
+    html.enabled = true
   }
 }
 
