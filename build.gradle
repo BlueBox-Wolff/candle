@@ -29,6 +29,10 @@ dependencies {
 sourceCompatibility = 8
 targetCompatibility = 8
 
+test {
+  finalizedBy jacocoTestReport
+}
+
 compileJava {
   options.encoding = 'UTF-8'
 }
@@ -37,10 +41,18 @@ compileTestJava {
   options.encoding = 'UTF-8'
 }
 
+jacoco {
+  toolVersion = "0.8.5"
+  reportsDir = file("$buildDir/jacoco")
+}
+
 jacocoTestReport {
+  dependsOn test
+
   reports {
-    xml.enabled = true
-    html.enabled = true
+    xml.enabled true
+    html.enabled true
+    html.destination file("${buildDir}/jacocoHtml")
   }
 }
 
