@@ -2,8 +2,6 @@ plugins {
   id 'java'
   id 'idea'
   id 'java-gradle-plugin'
-  id 'jacoco'
-  id 'com.github.kt3k.coveralls' version "2.10.1"
 }
 
 defaultTasks 'clean', 'build'
@@ -29,10 +27,6 @@ dependencies {
 sourceCompatibility = 8
 targetCompatibility = 8
 
-test {
-  finalizedBy jacocoTestReport
-}
-
 compileJava {
   options.encoding = 'UTF-8'
 }
@@ -41,24 +35,6 @@ compileTestJava {
   options.encoding = 'UTF-8'
 }
 
-jacoco {
-  toolVersion = "0.8.5"
-  reportsDir = file("$buildDir/jacoco")
-}
-
-jacocoTestReport {
-  dependsOn test
-
-  reports {
-    xml.enabled true
-    html.enabled true
-    html.destination file("${buildDir}/jacocoHtml")
-  }
-}
-
-coveralls {
-  jacocoReportPath 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
-}
 
 task sourcesJar(type: Jar) {
   from sourceSets.main.allJava
