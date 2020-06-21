@@ -1,8 +1,14 @@
 package de.bluebox.wolff.candle;
 
+import de.bluebox.wolff.candle.annotation.Nullable;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public final class Strings {
   private static final String EMPTY_STRING = "";
   private static final String SPACE = " ";
+  private static final String DEFAULT_CHARSET = "UTF-8";
   private static final char[] HEX_CHARS = {
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
   };
@@ -10,6 +16,31 @@ public final class Strings {
   private Strings() {}
 
   private static final int DEFAULT_OFFSET = 0;
+
+  public static boolean startWithIgnoreCase(String string, String prefix) {
+    return string.regionMatches(true, DEFAULT_OFFSET, prefix, DEFAULT_OFFSET, prefix.length());
+  }
+
+  @Nullable
+  public static String readStringFromClassPath(ClassLoader classLoader, String classPath) {
+    Preconditions.checkNotNull(classLoader);
+    Preconditions.checkNotNull(classPath);
+
+    try (InputStream inputStream = classLoader.getResourceAsStream(classPath)) {
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+      byte[] buffer = new byte[128];
+      int length;
+
+      Assert.assertNonNull(inputStream);
+      while ((length = inputStream.read(buffer)) != -1) {
+        outputStream.write(buffer, 0, length);
+      }
+      return outputStream.toString(DEFAULT_CHARSET);
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+    return null;
+  }
 
   public static String bytesToHexString(byte[] bytes) {
     Preconditions.checkNotNull(bytes);
