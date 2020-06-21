@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 public class ArrayIterator<E> implements Iterator<E> {
-  private final E[] elements;
-  private final int length;
-  private int index;
+  protected final E[] elements;
+  protected final int length;
+  protected int index;
 
   protected ArrayIterator(E[] elements) {
     this.elements = elements;

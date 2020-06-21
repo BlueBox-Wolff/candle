@@ -9,29 +9,29 @@ import java.util.stream.Collectors;
 
 public class Sets {
   public static <E> Set<E> fromArray(E[] array) {
-    Set<E> list = new HashSet<>(array.length);
+    Set<E> set = new HashSet<>(array.length);
 
-    Collections.addAll(list, array);
-    Assert.assertCondition(list.size() == array.length);
-    return list;
+    Collections.addAll(set, array);
+    Assert.assertCondition(set.size() == array.length);
+    return set;
   }
 
   public static <E> Set<E> fromArray(E[][] array) {
-    Set<E> list =
+    Set<E> set =
         Arrays.stream(array)
             .flatMap(Arrays::stream)
             .collect(Collectors.toCollection(() -> new HashSet<>(array.length)));
 
-    Assert.assertCondition(list.size() == array.length);
-    return list;
+    Assert.assertCondition(set.size() == array.length);
+    return set;
   }
 
   @SafeVarargs
   public static <E> Set<E> fromElements(E... elements) {
-    Set<E> list = new HashSet<>(elements.length);
+    Set<E> set = new HashSet<>(elements.length);
 
-    Collections.addAll(list, elements);
-    assert list.size() == elements.length;
-    return list;
+    Collections.addAll(set, elements);
+    assert set.size() == elements.length;
+    return set;
   }
 }
