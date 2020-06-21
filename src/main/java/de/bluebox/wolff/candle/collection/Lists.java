@@ -34,7 +34,7 @@ public final class Lists {
     List<E> list = new ArrayList<>(elements.length);
 
     Collections.addAll(list, elements);
-    assert list.size() == elements.length;
+    Assert.assertCondition(list.size() == elements.length);
     return list;
   }
 

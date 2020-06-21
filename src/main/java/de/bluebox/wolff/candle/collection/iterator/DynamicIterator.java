@@ -1,6 +1,7 @@
 package de.bluebox.wolff.candle.collection.iterator;
 
 import de.bluebox.wolff.candle.Preconditions;
+import de.bluebox.wolff.candle.annotation.Nullable;
 import java.util.ArrayDeque;
 import java.util.Objects;
 import java.util.Queue;
@@ -32,23 +33,28 @@ public final class DynamicIterator<E> extends LazyIterator<E> {
     this(DEFAULT_INITIAL_SIZE);
   }
 
+  @Nullable
   @Override
   public E computeNext() {
     try {
       this.available.acquire();
-
-      synchronized (this.queue) {
-        E element = this.queue.poll();
-
-        if (element == null) {
-          Preconditions.checkState(this.finished);
-          this.endOfData();
-        }
-        return element;
-      }
+      return this.retrieveElement();
     } catch (InterruptedException ex) {
       Thread.currentThread().interrupt();
       throw new RuntimeException(ex);
+    }
+  }
+
+  @Nullable
+  private E retrieveElement() {
+    synchronized (this.queue) {
+      E element = this.queue.poll();
+
+      if (element == null) {
+        Preconditions.checkState(this.finished);
+        this.endOfData();
+      }
+      return element;
     }
   }
 
