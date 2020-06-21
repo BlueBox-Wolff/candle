@@ -27,23 +27,23 @@ public abstract class AbstractSettableFuture<V> implements RunnableFuture<V>, Co
     this.notifyAll();
   }
 
-  public synchronized void setValue(V value) {
+  public synchronized final void setValue(V value) {
     this.value = value;
     this.complete();
   }
 
-  public synchronized void setException(Throwable throwable) {
+  public synchronized final void setException(Throwable throwable) {
     this.throwable = throwable;
     this.complete();
   }
 
-  protected synchronized void waitForCompletion() throws InterruptedException {
+  protected synchronized final void waitForCompletion() throws InterruptedException {
     while (!this.isDone()) {
       this.wait();
     }
   }
 
-  protected synchronized void waitForCompletion(long timeout)
+  protected synchronized final void waitForCompletion(long timeout)
       throws InterruptedException, TimeoutException {
     long waitUntil = System.currentTimeMillis() + timeout;
 
