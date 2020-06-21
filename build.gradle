@@ -35,7 +35,6 @@ compileTestJava {
   options.encoding = 'UTF-8'
 }
 
-
 task sourcesJar(type: Jar) {
   from sourceSets.main.allJava
   archiveClassifier.set('sources')
