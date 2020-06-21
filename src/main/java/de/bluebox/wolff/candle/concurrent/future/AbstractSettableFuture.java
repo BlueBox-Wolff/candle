@@ -17,21 +17,6 @@ public abstract class AbstractSettableFuture<V> implements RunnableFuture<V>, Co
   protected AbstractSettableFuture() {}
 
   @Override
-  public void run() {
-    this.setValue(null);
-  }
-
-  @Override
-  public boolean cancel(boolean mayInterruptIfRunning) {
-    return false;
-  }
-
-  @Override
-  public boolean isCancelled() {
-    return false;
-  }
-
-  @Override
   public boolean isDone() {
     return this.done;
   }

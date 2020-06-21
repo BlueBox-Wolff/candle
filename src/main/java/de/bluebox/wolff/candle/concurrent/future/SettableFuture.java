@@ -11,6 +11,21 @@ public class SettableFuture<V> extends AbstractSettableFuture<V> {
   protected SettableFuture() {}
 
   @Override
+  public void run() {
+    this.setValue(null);
+  }
+
+  @Override
+  public boolean cancel(boolean mayInterruptIfRunning) {
+    return false;
+  }
+
+  @Override
+  public boolean isCancelled() {
+    return false;
+  }
+
+  @Override
   public V get() throws InterruptedException, ExecutionException {
     this.waitForCompletion();
 
