@@ -1,36 +1,22 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Report a security vulnerability
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+BlueBox-Wolff (candle) Issue Template for bugs
+==========================
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+- Please ensure that you have verified that the bug you are reporting exists on the current version before reporting.
+- It is also appreciated if you can verify the presence or absence of the bug on the current candle release version.
+- Make sure that information is as detailed as possible so that others can reproduce your issue even if they are unfamiliar with the concepts involved.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Please fill out the appropriate checkboxes below confirming the testing you have done:
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+---
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+- [ ] Bug exists on current candle version
+- [ ] Bug does not exist on current candle version
