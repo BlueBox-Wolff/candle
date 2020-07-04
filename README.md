@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/BlueBox-Wolff/candle.svg?branch=master)](https://travis-ci.org/BlueBox-Wolff/candle)
-[![codebeat badge](https://codebeat.co/badges/97cd68e6-f0df-493f-a037-873ea1222a62)](https://codebeat.co/projects/github-com-bluebox-wolff-candle-master)
+![Gradle CI](https://github.com/BlueBox-Wolff/candle/workflows/Gradle%20CI/badge.svg)
 
 # candle
 A Library to easily manage topics like concurrency, collections and validations
