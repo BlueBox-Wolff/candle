@@ -4,11 +4,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        java: [ 8, 11, 12, 13, 14 ]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        java: [ 8, 9, 10, 11, 12, 13, 14 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +19,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
+          architecture: x64
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
