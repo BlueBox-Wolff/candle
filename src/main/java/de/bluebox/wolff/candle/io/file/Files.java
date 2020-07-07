@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collection;
 
 public final class Files {
   private Files() {}
@@ -37,18 +38,15 @@ public final class Files {
   }
 
   public static boolean createFileOrDirectory(File file) throws IOException {
-    if (file.isDirectory()) {
-      return file.mkdir();
-    } else {
-      return file.createNewFile();
-    }
+    return file.isDirectory() ? file.mkdir() : file.createNewFile();
   }
 
   public static boolean deleteDirectories(File[] directory) {
-    return Arrays.stream(directory)
-        .filter(File::isDirectory)
-        .map(File::delete)
-        .reduce(true, (a, b) -> a && b);
+    return deleteDirectories(Arrays.asList(directory));
+  }
+
+  public static boolean deleteDirectories(Collection<File> directories) {
+    return directories.stream().map(Files::deleteDirectory).reduce(true, (a, b) -> a && b);
   }
 
   public static boolean deleteDirectory(File directory) {
