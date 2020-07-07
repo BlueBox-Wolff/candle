@@ -1,0 +1,32 @@
+name: Gradle CI
+
+on: 
+  push:
+    branches: 
+      - master
+  
+  pull_request:
+
+jobs:
+  build:
+    name: Test for ${{ matrix.java }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java: [ 8, 9, 10, 11, 12, 13, 14 ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+          architecture: x64
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with gradlew
+        run: ./gradlew build
