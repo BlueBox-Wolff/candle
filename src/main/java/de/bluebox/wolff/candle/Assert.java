@@ -25,16 +25,19 @@
 
 package de.bluebox.wolff.candle;
 
+import de.bluebox.wolff.candle.annotation.NonNull;
 import de.bluebox.wolff.candle.annotation.Nullable;
 
 public final class Assert {
   private Assert() {}
 
+  @NonNull
   public static <T> T assertNonNull(T value) {
     assert value != null;
     return value;
   }
 
+  @NonNull
   public static <T> T assertNonNull(T value, String errorMessage) {
     assert value != null : errorMessage;
     return value;
