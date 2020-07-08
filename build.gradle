@@ -25,8 +25,9 @@
 
 plugins {
   id 'java'
-  id 'idea'
   id 'java-gradle-plugin'
+  id 'idea'
+  id 'eclipse'
 }
 
 defaultTasks 'clean', 'build'
@@ -46,7 +47,7 @@ repositories() {
 dependencies {
   implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
-  testImplementation 'junit:junit:4.13'
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
 }
 
 sourceCompatibility = 8

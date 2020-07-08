@@ -31,21 +31,34 @@ public final class Assert {
   private Assert() {}
 
   public static <T> T assertNonNull(T value) {
-    assert value != null;
+    if (value == null) {
+      throw new AssertionError();
+    }
     return value;
   }
 
   public static <T> T assertNonNull(T value, String errorMessage) {
-    assert value != null : errorMessage;
+    if (value == null) {
+      throw new AssertionError(errorMessage);
+    }
     return value;
   }
 
+  public static <T> T assertNonNull(
+      T value, String errorMessage, @Nullable Object... errorMessageArgs) {
+    return assertNonNull(value, String.format(errorMessage, errorMessageArgs));
+  }
+
   public static void assertCondition(boolean condition) {
-    assert condition;
+    if (!condition) {
+      throw new AssertionError();
+    }
   }
 
   public static void assertCondition(boolean condition, String errorMessage) {
-    assert condition : errorMessage;
+    if (!condition) {
+      throw new AssertionError(errorMessage);
+    }
   }
 
   public static void assertCondition(

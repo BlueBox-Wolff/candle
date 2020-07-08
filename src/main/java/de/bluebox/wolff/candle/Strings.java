@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public final class Strings {
-  private static final String EMPTY_STRING = "";
-  private static final String SPACE = " ";
+  public static final String EMPTY_STRING = "";
+  public static final String SPACE = " ";
   private static final String DEFAULT_CHARSET = "UTF-8";
   private static final char[] HEX_CHARS = {
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
@@ -85,13 +85,5 @@ public final class Strings {
       chars[2 * index + 1] = HEX_CHARS[unsignedInt & 0x0F];
     }
     return new String(chars);
-  }
-
-  public static String emptyString() {
-    return EMPTY_STRING;
-  }
-
-  public static String space() {
-    return SPACE;
   }
 }
