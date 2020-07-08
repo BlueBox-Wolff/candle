@@ -8,7 +8,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Collections of file utilities
+ * <p>
+ *   Collections of file utilities
+ * </p>
  *
  * @author Jerome Wolff
  * @since 1.0.0

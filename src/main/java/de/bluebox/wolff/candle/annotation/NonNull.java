@@ -43,7 +43,7 @@ import javax.annotation.meta.TypeQualifierNickname;
  * </p>
  *
  * @author Jerome Wolff
- * @version 1.0.0
+ * @since 1.0.0
  */
 @Documented
 @Target({METHOD, PARAMETER, FIELD})

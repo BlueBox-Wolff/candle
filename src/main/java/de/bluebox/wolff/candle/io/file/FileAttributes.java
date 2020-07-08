@@ -36,7 +36,9 @@ import java.nio.file.Path;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 /**
- * Class to lookup or set attributes of a file
+ * <p>
+ *   Class to lookup or set attributes of a file
+ * </p>
  *
  * @author Jerome Wolff
  * @since 1.0.0
@@ -100,12 +102,12 @@ public final class FileAttributes {
 
   /**
    * <p>
-   *   This method tries to lookup the {@link java.nio.file.attribute.UserDefinedFileAttributeView}
+   *   This method tries to lookup the {@link UserDefinedFileAttributeView}
    *   from the specified file path.
    * </p>
    *
    * @param path path to file
-   * @return {@see java.nio.file.attribute.UserDefinedFileAttributeView} from the path
+   * @return {@link UserDefinedFileAttributeView} from the path
    * @throws IOException If an I/O error occurs
    * @since 1.0.0
    */
