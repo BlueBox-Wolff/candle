@@ -25,6 +25,7 @@
 
 package de.bluebox.wolff.candle.io.file;
 
+import de.bluebox.wolff.candle.annotation.Experimental;
 import de.bluebox.wolff.candle.annotation.Nullable;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -34,11 +35,27 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
 
+/**
+ * Class to lookup or set attributes of a file
+ *
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public final class FileAttributes {
   private FileAttributes() {}
 
   private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
+  /**
+   * <p>
+   *   Sets value of the specified file and attribute
+   * </p>
+   *
+   * @param path path to file
+   * @param attribute file attribute
+   * @param value attribute value
+   * @throws IOException If an I/O error occurs
+   */
   public static void setAttribute(Path path, String attribute, String value) throws IOException {
     UserDefinedFileAttributeView view = lookupUserDefinedFileAttributeView(path);
 
@@ -54,6 +71,16 @@ public final class FileAttributes {
     view.write(attribute, buffer);
   }
 
+  /**
+   * <p>
+   *   Returns the value of a specific file and the specified attribute.
+   * </p>
+   *
+   * @param path path to file
+   * @param attribute attribute from which the value is to be returned
+   * @return attribute value from specified attribute
+   * @throws IOException If an I/O error occurs
+   */
   @Nullable
   public static String getAttribute(Path path, String attribute) throws IOException {
     UserDefinedFileAttributeView view = lookupUserDefinedFileAttributeView(path);
@@ -69,6 +96,17 @@ public final class FileAttributes {
     return new String(buffer.array(), DEFAULT_CHARSET);
   }
 
+  /**
+   * <p>
+   *   This method tries to lookup the {@link java.nio.file.attribute.UserDefinedFileAttributeView}
+   *   from the specified file path.
+   * </p>
+   *
+   * @param path path to file
+   * @return {@see java.nio.file.attribute.UserDefinedFileAttributeView} from the path
+   * @throws IOException If an I/O error occurs
+   */
+  @Experimental
   @Nullable
   private static UserDefinedFileAttributeView lookupUserDefinedFileAttributeView(Path path)
       throws IOException {
