@@ -55,6 +55,7 @@ public final class FileAttributes {
    * @param attribute file attribute
    * @param value attribute value
    * @throws IOException If an I/O error occurs
+   * @since 1.0.0
    */
   public static void setAttribute(Path path, String attribute, String value) throws IOException {
     UserDefinedFileAttributeView view = lookupUserDefinedFileAttributeView(path);
@@ -80,6 +81,7 @@ public final class FileAttributes {
    * @param attribute attribute from which the value is to be returned
    * @return attribute value from specified attribute
    * @throws IOException If an I/O error occurs
+   * @since 1.0.0
    */
   @Nullable
   public static String getAttribute(Path path, String attribute) throws IOException {
@@ -105,6 +107,7 @@ public final class FileAttributes {
    * @param path path to file
    * @return {@see java.nio.file.attribute.UserDefinedFileAttributeView} from the path
    * @throws IOException If an I/O error occurs
+   * @since 1.0.0
    */
   @Experimental
   @Nullable
