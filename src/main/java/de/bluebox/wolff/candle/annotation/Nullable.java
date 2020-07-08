@@ -30,12 +30,23 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierNickname;
 import javax.annotation.meta.When;
 
+/**
+ * <p>
+ *   Indicates that the mentioned method, parameter
+ *   or field can return or carry the {@code null} value.
+ * </p>
+ *
+ * @author Jerome Wolff
+ * @version 1.0.0
+ */
+@Documented
 @Target({METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)
 @Nonnull(when = When.MAYBE)

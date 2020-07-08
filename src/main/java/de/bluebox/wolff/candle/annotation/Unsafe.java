@@ -25,12 +25,22 @@
 
 package de.bluebox.wolff.candle.annotation;
 
+import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-@Target(TYPE)
+/**
+ * <p>
+ *   Indicates that the mentioned class or method is not in a experimental state
+ *   but not safe to use.
+ * </p>
+ *
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
+@Target({TYPE, METHOD})
 @Retention(CLASS)
 public @interface Unsafe {}
