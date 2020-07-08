@@ -25,13 +25,21 @@
 
 package de.bluebox.wolff.candle.exception;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public final class QuietExceptionTestCase {
+import static org.junit.jupiter.api.Assertions.*;
+
+final class QuietExceptionTest {
   @Test
-  public void testPrintStackTrace() {
-    QuietException exception =
-        new QuietException("Testing printStackTrace() method for QuietException");
-    exception.printStackTrace();
+  public void testQuietExceptionWithMessage() {
+    QuietException exception = new QuietException("message");
+
+    this.validate(exception, exception.getCause(), "message");
+  }
+
+  void validate(Throwable throwable, Throwable expectedCause, String expectedMessage) {
+    assertEquals(expectedMessage, throwable.getMessage());
+    assertEquals(expectedCause, throwable.getCause());
+    assertSame(expectedCause, throwable.getCause());
   }
 }
