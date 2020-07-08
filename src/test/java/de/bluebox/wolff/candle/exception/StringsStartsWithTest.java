@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public final class StringsTest {
+public final class StringsStartsWithTest {
   private static final String STARTS_WITH_IGNORE_CASE_TEST_STRING = "lower_case";
 
   @Test
