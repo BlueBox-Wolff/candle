@@ -42,6 +42,22 @@ public final class Strings {
 
   private static final int DEFAULT_OFFSET = 0;
 
+  /**
+   * Tests if the specified string starts with the provided prefix. This Method is case insensitive.
+   *
+   * <pre>
+   * StringUtils.startWithIgnoreCase("", "")                      = true
+   * StringUtils.startWithIgnoreCase("lower_case", "LOWER")       = true
+   * StringUtils.startWithIgnoreCase("lower_case", "lower")       = true
+   * StringUtils.startWithIgnoreCase("lower_case", "CASE")        = false
+   * StringUtils.startWithIgnoreCase("lower_case", "case")        = false
+   * StringUtils.startWithIgnoreCase("lower_case", "_")           = false
+   * </pre>
+   *
+   * @param string the string
+   * @param prefix the prefix the string seems to start with
+   * @return {@code true} if string starts with prefix. {@code false} otherwise
+   */
   public static boolean startWithIgnoreCase(String string, String prefix) {
     return string.regionMatches(true, DEFAULT_OFFSET, prefix, DEFAULT_OFFSET, prefix.length());
   }

@@ -27,43 +27,90 @@ package de.bluebox.wolff.candle.collection.iterator;
 
 import de.bluebox.wolff.candle.Preconditions;
 import de.bluebox.wolff.candle.annotation.Nullable;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.StringJoiner;
 
+import java.util.*;
+
+/**
+ * {@link Iterator} with specialization on arrays
+ *
+ * @param <E> type of the array
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public class ArrayIterator<E> implements Iterator<E> {
-  protected final E[] elements;
+  protected final E[] array;
   protected final int length;
   protected int index;
 
-  protected ArrayIterator(E[] elements) {
-    this.elements = elements;
-    this.length = elements.length;
+  /**
+   * Creates an {@link Iterator} of an specific array
+   *
+   * @param array array over which to iterate
+   * @since 1.0.0
+   */
+  protected ArrayIterator(E[] array) {
+    this.array = array;
+    this.length = array.length;
     this.index = 0;
   }
 
+  /**
+   * Returns {@code true} if the iteration has more elements. (In other words, returns {@code true}
+   * if {@link #next} would return an element rather than throwing an exception.)
+   *
+   * @return {@code true} if the iteration has more elements
+   * @see Iterator
+   * @since 1.0.0
+   */
   @Override
   public boolean hasNext() {
     return this.length > this.index;
   }
 
+  /**
+   * Returns the next element in the iteration.
+   *
+   * @return the next element in the iteration or {@code null}
+   * @throws NoSuchElementException if the iteration has no more elements
+   * @see Iterator
+   * @since 1.0.0
+   */
   @Nullable
   @Override
   public E next() {
     E element = null;
 
     if (this.hasNext()) {
-      element = this.elements[this.index];
+      element = this.array[this.index];
       this.index++;
     }
     return element;
   }
 
+  /**
+   * Removes from the underlying collection the last element returned by this iterator (optional
+   * operation). This method can be called only once per call to {@link #next}.
+   *
+   * <p>The behavior of an iterator is unspecified if the underlying collection is modified while
+   * the iteration is in progress in any way other than by calling this method, unless an overriding
+   * class has specified a concurrent modification policy.
+   *
+   * <p>The behavior of an iterator is unspecified if this method is called after a call to the
+   * {@link #forEachRemaining forEachRemaining} method.
+   *
+   * @throws UnsupportedOperationException if the {@code remove} operation is not supported by this
+   *     iterator
+   * @throws IllegalStateException if the {@code next} method has not yet been called, or the {@code
+   *     remove} method has already been called after the last call to the {@code next} method
+   * @implSpec The default implementation throws an instance of {@link
+   *     UnsupportedOperationException} and performs no other action.
+   * @see Iterator
+   * @since 1.0.0
+   */
   @Deprecated
   @Override
   public void remove() {
-    this.elements[this.index] = null;
+    this.array[this.index] = null;
   }
 
   @Override
@@ -77,27 +124,35 @@ public class ArrayIterator<E> implements Iterator<E> {
     ArrayIterator<?> that = (ArrayIterator<?>) object;
     return this.length == that.length
         && this.index == that.index
-        && Arrays.equals(this.elements, that.elements);
+        && Arrays.equals(this.array, that.array);
   }
 
   @Override
   public int hashCode() {
     int result = Objects.hash(this.length, this.index);
-    result = 31 * result + Arrays.hashCode(this.elements);
+    result = 31 * result + Arrays.hashCode(this.array);
     return result;
   }
 
   @Override
   public String toString() {
     return new StringJoiner(", ", ArrayIterator.class.getSimpleName() + "[", "]")
-        .add("elements=" + Arrays.toString(this.elements))
+        .add("elements=" + Arrays.toString(this.array))
         .add("length=" + this.length)
         .add("index=" + this.index)
         .toString();
   }
 
-  public static <E> ArrayIterator<E> of(E[] elements) {
-    Preconditions.checkNotNull(elements);
-    return new ArrayIterator<>(elements);
+  /**
+   * Invokes constructor {@code ArrayIterator(E[])}
+   *
+   * @param array array over which to iterate
+   * @param <E> type of the array
+   * @return an iterator of specific array
+   * @since 1.0.0
+   */
+  public static <E> ArrayIterator<E> of(E[] array) {
+    Preconditions.checkNotNull(array);
+    return new ArrayIterator<>(array);
   }
 }

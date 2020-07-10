@@ -26,6 +26,7 @@
 package de.bluebox.wolff.candle.collection;
 
 import de.bluebox.wolff.candle.Assert;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -33,9 +34,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Collection of utilities for list. For example, to easily create a list from a multidimensional
+ * array.
+ *
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public final class Lists {
   private Lists() {}
 
+  /**
+   * Creates a list with a certain type from an array.
+   *
+   * @param array array from which the list is to be created
+   * @param <E> Type of the array and the returned contents of the list
+   * @return the created list
+   * @since 1.0.0
+   */
   public static <E> List<E> fromArray(E[] array) {
     List<E> list = new ArrayList<>(array.length);
 
@@ -44,6 +60,14 @@ public final class Lists {
     return list;
   }
 
+  /**
+   * Creates a list with a certain type from an multidimensional array.
+   *
+   * @param array multidimensional array from which the list is to be created
+   * @param <E> Type of the array and the returned contents of the list
+   * @return the created list
+   * @since 1.0.0
+   */
   public static <E> List<E> fromArray(E[][] array) {
     List<E> list =
         Arrays.stream(array)
@@ -54,6 +78,14 @@ public final class Lists {
     return list;
   }
 
+  /**
+   * Creates a list with a certain type from multiple elements.
+   *
+   * @param elements elements from which the list is to be created
+   * @param <E> Type of the array and the returned contents of the list
+   * @return the created list
+   * @since 1.0.0
+   */
   @SafeVarargs
   public static <E> List<E> fromElements(E... elements) {
     List<E> list = new ArrayList<>(elements.length);

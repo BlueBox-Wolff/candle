@@ -26,6 +26,14 @@
 package de.bluebox.wolff.candle.collection.iterator;
 
 import de.bluebox.wolff.candle.functional.Resettable;
+
 import java.util.Iterator;
 
+/**
+ * {@link Iterator} which can be reset. This means that the iteration can start from the beginning.
+ *
+ * @param <E> element type
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public interface ResettableIterator<E> extends Iterator<E>, Resettable {}

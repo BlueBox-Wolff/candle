@@ -26,13 +26,29 @@
 package de.bluebox.wolff.candle.collection;
 
 import de.bluebox.wolff.candle.Assert;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Collection of utilities for sets. For example, to easily create a set from a multidimensional
+ * array.
+ *
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public class Sets {
+  /**
+   * Creates a set with a certain type from an array.
+   *
+   * @param array array from which the set is to be created
+   * @param <E> Type of the array and the returned contents of the set
+   * @return the created set
+   * @since 1.0.0
+   */
   public static <E> Set<E> fromArray(E[] array) {
     Set<E> set = new HashSet<>(array.length);
 
@@ -41,6 +57,14 @@ public class Sets {
     return set;
   }
 
+  /**
+   * Creates a set with a certain type from an multidimensional array.
+   *
+   * @param array multidimensional array from which the set is to be created
+   * @param <E> Type of the array and the returned contents of the set
+   * @return the created set
+   * @since 1.0.0
+   */
   public static <E> Set<E> fromArray(E[][] array) {
     Set<E> set =
         Arrays.stream(array)
@@ -51,6 +75,14 @@ public class Sets {
     return set;
   }
 
+  /**
+   * Creates a set with a certain type from multiple elements.
+   *
+   * @param elements elements from which the set is to be created
+   * @param <E> Type of the array and the returned contents of the set
+   * @return the created set
+   * @since 1.0.0
+   */
   @SafeVarargs
   public static <E> Set<E> fromElements(E... elements) {
     Set<E> set = new HashSet<>(elements.length);
