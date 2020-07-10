@@ -37,10 +37,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierNickname;
 
 /**
- * <p>
- *   Indicates that the mentioned method, parameter
- *   or field cannot return or carry the {@code null} value.
- * </p>
+ * Indicates that the mentioned method, parameter or field cannot return or carry the {@code null}
+ * value.
  *
  * @author Jerome Wolff
  * @since 1.0.0

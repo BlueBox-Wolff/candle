@@ -38,10 +38,8 @@ import javax.annotation.meta.TypeQualifierNickname;
 import javax.annotation.meta.When;
 
 /**
- * <p>
- *   Indicates that the mentioned method, parameter
- *   or field can return or carry the {@code null} value.
- * </p>
+ * Indicates that the mentioned method, parameter or field can return or carry the {@code null}
+ * value.
  *
  * @author Jerome Wolff
  * @since 1.0.0

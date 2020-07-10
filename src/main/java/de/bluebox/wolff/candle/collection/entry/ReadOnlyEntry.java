@@ -32,9 +32,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
- * <p>
  * Immutable implementation of {@link Entry}
- * </p>
  *
  * @param <K> key type
  * @param <V> value type
@@ -45,9 +43,7 @@ public class ReadOnlyEntry<K, V> implements Entry<K, V> {
   protected final Entry<K, V> entry;
 
   /**
-   * <p>
    * Creates an {@link ReadOnlyEntry} from an {@link Entry}
-   * </p>
    *
    * @param entry delegating entry
    * @since 1.0.0
@@ -75,9 +71,8 @@ public class ReadOnlyEntry<K, V> implements Entry<K, V> {
   }
 
   /**
-   * <p>
-   * Throws an {@link UnsupportedOperationException}, because the value of this entry cannot be changed.
-   * </p>
+   * Throws an {@link UnsupportedOperationException}, because the value of this entry cannot be
+   * changed.
    *
    * @param value ignored value
    * @return {@code null}
@@ -108,18 +103,16 @@ public class ReadOnlyEntry<K, V> implements Entry<K, V> {
   @Override
   public String toString() {
     return new StringJoiner(", ", ReadOnlyEntry.class.getSimpleName() + "[", "]")
-      .add("entry=" + this.entry)
-      .toString();
+        .add("entry=" + this.entry)
+        .toString();
   }
 
   /**
-   * <p>
    * Invokes constructor {@code ReadOnlyEntry(Entry<K, V> entry)}
-   * </p>
    *
    * @param entry delegating entry
-   * @param <K>   key type
-   * @param <V>   value type
+   * @param <K> key type
+   * @param <V> value type
    * @return An immutable entry with the values of the specified entry
    * @since 1.0.0
    */

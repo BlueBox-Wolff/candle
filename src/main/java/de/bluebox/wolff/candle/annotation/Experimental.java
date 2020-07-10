@@ -10,9 +10,7 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
 /**
- * <p>
- *   Indicates that the mentioned class or method is in an experimental state.
- * </p>
+ * Indicates that the mentioned class or method is in an experimental state.
  *
  * @author Jerome Wolff
  * @since 1.0.0

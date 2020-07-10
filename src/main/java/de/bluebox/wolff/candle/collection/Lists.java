@@ -35,25 +35,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * <p>
- * Collection of utilities for list.
- * For example, to easily create a list from a multidimensional array.
- * </p>
+ * Collection of utilities for list. For example, to easily create a list from a multidimensional
+ * array.
  *
  * @author Jerome Wolff
  * @since 1.0.0
  */
 public final class Lists {
-  private Lists() {
-  }
+  private Lists() {}
 
   /**
-   * <p>
    * Creates a list with a certain type from an array.
-   * </p>
    *
    * @param array array from which the list is to be created
-   * @param <E>   Type of the array and the returned contents of the list
+   * @param <E> Type of the array and the returned contents of the list
    * @return the created list
    * @since 1.0.0
    */
@@ -66,32 +61,28 @@ public final class Lists {
   }
 
   /**
-   * <p>
    * Creates a list with a certain type from an multidimensional array.
-   * </p>
    *
    * @param array multidimensional array from which the list is to be created
-   * @param <E>   Type of the array and the returned contents of the list
+   * @param <E> Type of the array and the returned contents of the list
    * @return the created list
    * @since 1.0.0
    */
   public static <E> List<E> fromArray(E[][] array) {
     List<E> list =
-      Arrays.stream(array)
-        .flatMap(Arrays::stream)
-        .collect(Collectors.toCollection(() -> new ArrayList<>(array.length)));
+        Arrays.stream(array)
+            .flatMap(Arrays::stream)
+            .collect(Collectors.toCollection(() -> new ArrayList<>(array.length)));
 
     Assert.assertCondition(list.size() == array.length);
     return list;
   }
 
   /**
-   * <p>
    * Creates a list with a certain type from multiple elements.
-   * </p>
    *
    * @param elements elements from which the list is to be created
-   * @param <E>      Type of the array and the returned contents of the list
+   * @param <E> Type of the array and the returned contents of the list
    * @return the created list
    * @since 1.0.0
    */
@@ -106,9 +97,9 @@ public final class Lists {
 
   public static <E> List<E> retainAll(Collection<E> collection, Collection<?> retain) {
     return collection.stream()
-      .filter(retain::contains)
-      .collect(
-        Collectors.toCollection(
-          () -> new ArrayList<>(Math.min(collection.size(), retain.size()))));
+        .filter(retain::contains)
+        .collect(
+            Collectors.toCollection(
+                () -> new ArrayList<>(Math.min(collection.size(), retain.size()))));
   }
 }

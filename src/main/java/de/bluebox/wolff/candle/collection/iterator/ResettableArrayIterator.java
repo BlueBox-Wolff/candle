@@ -26,9 +26,7 @@
 package de.bluebox.wolff.candle.collection.iterator;
 
 /**
- * <p>
  * Resettable implementation of {@link ArrayIterator}
- * </p>
  *
  * @param <E> type of the array
  * @author Jerome Wolff
@@ -36,9 +34,7 @@ package de.bluebox.wolff.candle.collection.iterator;
  */
 public class ResettableArrayIterator<E> extends ArrayIterator<E> implements ResettableIterator<E> {
   /**
-   * <p>
    * Creates an {@link ResettableIterator} of an specific array
-   * </p>
    *
    * @param array array over which to iterate
    * @since 1.0.0
@@ -48,10 +44,7 @@ public class ResettableArrayIterator<E> extends ArrayIterator<E> implements Rese
   }
 
   /**
-   * <p>
-   * Resets index of {@link ArrayIterator}
-   * This means that the iteration starts all over again.
-   * </p>
+   * Resets index of {@link ArrayIterator} This means that the iteration starts all over again.
    *
    * @since 1.0.0
    */

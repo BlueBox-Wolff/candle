@@ -34,10 +34,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- *   Indicates that the mentioned class or method is not in a experimental state
- *   but not safe to use.
- * </p>
+ * Indicates that the mentioned class or method is not in a experimental state but not safe to use.
  *
  * @author Jerome Wolff
  * @since 1.0.0

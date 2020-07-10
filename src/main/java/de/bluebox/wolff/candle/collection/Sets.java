@@ -34,22 +34,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * <p>
- * Collection of utilities for sets.
- * For example, to easily create a set from a multidimensional array.
- * </p>
+ * Collection of utilities for sets. For example, to easily create a set from a multidimensional
+ * array.
  *
  * @author Jerome Wolff
  * @since 1.0.0
  */
 public class Sets {
   /**
-   * <p>
    * Creates a set with a certain type from an array.
-   * </p>
    *
    * @param array array from which the set is to be created
-   * @param <E>   Type of the array and the returned contents of the set
+   * @param <E> Type of the array and the returned contents of the set
    * @return the created set
    * @since 1.0.0
    */
@@ -62,32 +58,28 @@ public class Sets {
   }
 
   /**
-   * <p>
    * Creates a set with a certain type from an multidimensional array.
-   * </p>
    *
    * @param array multidimensional array from which the set is to be created
-   * @param <E>   Type of the array and the returned contents of the set
+   * @param <E> Type of the array and the returned contents of the set
    * @return the created set
    * @since 1.0.0
    */
   public static <E> Set<E> fromArray(E[][] array) {
     Set<E> set =
-      Arrays.stream(array)
-        .flatMap(Arrays::stream)
-        .collect(Collectors.toCollection(() -> new HashSet<>(array.length)));
+        Arrays.stream(array)
+            .flatMap(Arrays::stream)
+            .collect(Collectors.toCollection(() -> new HashSet<>(array.length)));
 
     Assert.assertCondition(set.size() == array.length);
     return set;
   }
 
   /**
-   * <p>
    * Creates a set with a certain type from multiple elements.
-   * </p>
    *
    * @param elements elements from which the set is to be created
-   * @param <E>      Type of the array and the returned contents of the set
+   * @param <E> Type of the array and the returned contents of the set
    * @return the created set
    * @since 1.0.0
    */

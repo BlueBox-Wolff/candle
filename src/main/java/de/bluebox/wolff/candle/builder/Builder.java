@@ -26,10 +26,8 @@
 package de.bluebox.wolff.candle.builder;
 
 /**
- * <p>
- * Builder classes are designed to build objects and to make this as easy,
- * clean and clear as possible.
- * </p>
+ * Builder classes are designed to build objects and to make this as easy, clean and clear as
+ * possible.
  *
  * @param <T> the type of the return value
  * @author Jerome Wolff
@@ -38,10 +36,7 @@ package de.bluebox.wolff.candle.builder;
 @FunctionalInterface
 public interface Builder<T> {
   /**
-   * <p>
-   * The last called method of a Builder class.
-   * Its purpose is to return the built value.
-   * </p>
+   * The last called method of a Builder class. Its purpose is to return the built value.
    *
    * @return the value which was built
    * @since 1.0.0

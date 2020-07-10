@@ -8,27 +8,22 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * <p>
  * Collections of file utilities
- * </p>
  *
  * @author Jerome Wolff
  * @since 1.0.0
  */
 public final class Files {
-  private Files() {
-  }
+  private Files() {}
 
   /**
-   * <p>
    * Creates a file or folder that is deleted after the program ends.
-   * </p>
    *
    * <pre>
    *   Files.createTemporaryFile("/home/", "test_file")
    * </pre>
    *
-   * @param path     Path of the file
+   * @param path Path of the file
    * @param fileName Name of the file
    * @return the file that was created. If this file already exists, it will be returned.
    * @throws IOException If the file or directory could not created
@@ -39,15 +34,13 @@ public final class Files {
   }
 
   /**
-   * <p>
    * Creates a file or folder that is deleted after the program ends.
-   * </p>
    *
    * <pre>
    *   Files.createTemporaryFile(java.nio.file.Paths.get("/home/"), "test_file")
    * </pre>
    *
-   * @param path     Path of the file
+   * @param path Path of the file
    * @param fileName Name of the file
    * @return the file that was created. If this file already exists, it will be returned.
    * @throws IOException If the file or directory could not created
@@ -58,15 +51,13 @@ public final class Files {
   }
 
   /**
-   * <p>
    * Creates a file or folder that is deleted after the program ends.
-   * </p>
    *
    * <pre>
    *   Files.createTemporaryFile(new java.io.File("/home/"), "test_file")
    * </pre>
    *
-   * @param path     Path of the file
+   * @param path Path of the file
    * @param fileName Name of the file
    * @return the file that was created. If this file already exists, it will be returned.
    * @throws IOException If the file or directory could not created
@@ -92,10 +83,7 @@ public final class Files {
   }
 
   /**
-   * <p>
-   * Creates a new file or folder.
-   * This method is only used to avoid code duplications.
-   * </p>
+   * Creates a new file or folder. This method is only used to avoid code duplications.
    *
    * <pre>
    *   Files.createFileOrDirectory(new java.io.File("/home/test_file.xml"))
@@ -111,9 +99,7 @@ public final class Files {
   }
 
   /**
-   * <p>
    * Delete multiple directories at the same time
-   * </p>
    *
    * <pre>
    *   Files.deleteDirectories(new File[] {new java.io.File("/home/"), new java.io.File("/home2/")})
@@ -127,9 +113,7 @@ public final class Files {
   }
 
   /**
-   * <p>
    * Delete multiple directories at the same time
-   * </p>
    *
    * <pre>
    *   Files.deleteDirectories(java.util.Arrays.asList(new File[] {new java.io.File("/home/"), new java.io.File("/home2/")}))
@@ -144,9 +128,7 @@ public final class Files {
   }
 
   /**
-   * <p>
    * Deletes the specified file only if it is a folder.
-   * </p>
    *
    * <pre>
    *   Files.deleteDirectory(new java.io.File("/home/"))

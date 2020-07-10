@@ -31,9 +31,7 @@ import de.bluebox.wolff.candle.annotation.Nullable;
 import java.util.*;
 
 /**
- * <p>
  * {@link Iterator} with specialization on arrays
- * </p>
  *
  * @param <E> type of the array
  * @author Jerome Wolff
@@ -45,9 +43,7 @@ public class ArrayIterator<E> implements Iterator<E> {
   protected int index;
 
   /**
-   * <p>
    * Creates an {@link Iterator} of an specific array
-   * </p>
    *
    * @param array array over which to iterate
    * @since 1.0.0
@@ -59,9 +55,8 @@ public class ArrayIterator<E> implements Iterator<E> {
   }
 
   /**
-   * Returns {@code true} if the iteration has more elements.
-   * (In other words, returns {@code true} if {@link #next} would
-   * return an element rather than throwing an exception.)
+   * Returns {@code true} if the iteration has more elements. (In other words, returns {@code true}
+   * if {@link #next} would return an element rather than throwing an exception.)
    *
    * @return {@code true} if the iteration has more elements
    * @see Iterator
@@ -93,26 +88,22 @@ public class ArrayIterator<E> implements Iterator<E> {
   }
 
   /**
-   * Removes from the underlying collection the last element returned
-   * by this iterator (optional operation).  This method can be called
-   * only once per call to {@link #next}.
-   * <p>
-   * The behavior of an iterator is unspecified if the underlying collection
-   * is modified while the iteration is in progress in any way other than by
-   * calling this method, unless an overriding class has specified a
-   * concurrent modification policy.
-   * <p>
-   * The behavior of an iterator is unspecified if this method is called
-   * after a call to the {@link #forEachRemaining forEachRemaining} method.
+   * Removes from the underlying collection the last element returned by this iterator (optional
+   * operation). This method can be called only once per call to {@link #next}.
    *
-   * @throws UnsupportedOperationException if the {@code remove}
-   *                                       operation is not supported by this iterator
-   * @throws IllegalStateException         if the {@code next} method has not
-   *                                       yet been called, or the {@code remove} method has already
-   *                                       been called after the last call to the {@code next}
-   *                                       method
-   * @implSpec The default implementation throws an instance of
-   * {@link UnsupportedOperationException} and performs no other action.
+   * <p>The behavior of an iterator is unspecified if the underlying collection is modified while
+   * the iteration is in progress in any way other than by calling this method, unless an overriding
+   * class has specified a concurrent modification policy.
+   *
+   * <p>The behavior of an iterator is unspecified if this method is called after a call to the
+   * {@link #forEachRemaining forEachRemaining} method.
+   *
+   * @throws UnsupportedOperationException if the {@code remove} operation is not supported by this
+   *     iterator
+   * @throws IllegalStateException if the {@code next} method has not yet been called, or the {@code
+   *     remove} method has already been called after the last call to the {@code next} method
+   * @implSpec The default implementation throws an instance of {@link
+   *     UnsupportedOperationException} and performs no other action.
    * @see Iterator
    * @since 1.0.0
    */
@@ -132,8 +123,8 @@ public class ArrayIterator<E> implements Iterator<E> {
     }
     ArrayIterator<?> that = (ArrayIterator<?>) object;
     return this.length == that.length
-      && this.index == that.index
-      && Arrays.equals(this.array, that.array);
+        && this.index == that.index
+        && Arrays.equals(this.array, that.array);
   }
 
   @Override
@@ -146,19 +137,17 @@ public class ArrayIterator<E> implements Iterator<E> {
   @Override
   public String toString() {
     return new StringJoiner(", ", ArrayIterator.class.getSimpleName() + "[", "]")
-      .add("elements=" + Arrays.toString(this.array))
-      .add("length=" + this.length)
-      .add("index=" + this.index)
-      .toString();
+        .add("elements=" + Arrays.toString(this.array))
+        .add("length=" + this.length)
+        .add("index=" + this.index)
+        .toString();
   }
 
   /**
-   * <p>
    * Invokes constructor {@code ArrayIterator(E[])}
-   * </p>
    *
    * @param array array over which to iterate
-   * @param <E>   type of the array
+   * @param <E> type of the array
    * @return an iterator of specific array
    * @since 1.0.0
    */
