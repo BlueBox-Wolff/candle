@@ -27,6 +27,7 @@ package de.bluebox.wolff.candle.io.file;
 
 import de.bluebox.wolff.candle.annotation.Experimental;
 import de.bluebox.wolff.candle.annotation.Nullable;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -37,25 +38,26 @@ import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 /**
  * <p>
- *   Class to lookup or set attributes of a file
+ * Class to lookup or set attributes of a file
  * </p>
  *
  * @author Jerome Wolff
  * @since 1.0.0
  */
 public final class FileAttributes {
-  private FileAttributes() {}
+  private FileAttributes() {
+  }
 
   private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
   /**
    * <p>
-   *   Sets value of the specified file and attribute
+   * Sets value of the specified file and attribute
    * </p>
    *
-   * @param path path to file
+   * @param path      path to file
    * @param attribute file attribute
-   * @param value attribute value
+   * @param value     attribute value
    * @throws IOException If an I/O error occurs
    * @since 1.0.0
    */
@@ -76,10 +78,10 @@ public final class FileAttributes {
 
   /**
    * <p>
-   *   Returns the value of a specific file and the specified attribute.
+   * Returns the value of a specific file and the specified attribute.
    * </p>
    *
-   * @param path path to file
+   * @param path      path to file
    * @param attribute attribute from which the value is to be returned
    * @return attribute value from specified attribute
    * @throws IOException If an I/O error occurs
@@ -102,8 +104,8 @@ public final class FileAttributes {
 
   /**
    * <p>
-   *   This method tries to lookup the {@link UserDefinedFileAttributeView}
-   *   from the specified file path.
+   * This method tries to lookup the {@link UserDefinedFileAttributeView}
+   * from the specified file path.
    * </p>
    *
    * @param path path to file
@@ -114,10 +116,10 @@ public final class FileAttributes {
   @Experimental
   @Nullable
   private static UserDefinedFileAttributeView lookupUserDefinedFileAttributeView(Path path)
-      throws IOException {
+    throws IOException {
     if (!(path.toFile().exists()
-        || Files.getFileStore(path)
-            .supportsFileAttributeView(UserDefinedFileAttributeView.class))) {
+      || Files.getFileStore(path)
+      .supportsFileAttributeView(UserDefinedFileAttributeView.class))) {
       return null;
     }
     return Files.getFileAttributeView(path, UserDefinedFileAttributeView.class);

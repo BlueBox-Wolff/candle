@@ -27,13 +27,16 @@ package de.bluebox.wolff.candle.exception;
 
 /**
  * <p>
- *   Normal {@link RuntimeException} but returns only the exception type and the message at {@link Throwable#printStackTrace()}
+ * Normal {@link RuntimeException} but returns only the exception type and the message at {@link Throwable#printStackTrace()}
  * </p>
  *
  * @author Jerome Wolff
  * @since 1.0.0
  */
 public final class QuietException extends RuntimeException {
+  /**
+   * {@link RuntimeException(String)}
+   */
   public QuietException(String message) {
     super(message);
   }

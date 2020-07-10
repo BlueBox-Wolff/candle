@@ -26,27 +26,63 @@
 package de.bluebox.wolff.candle.collection.entry;
 
 import de.bluebox.wolff.candle.Preconditions;
+
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.StringJoiner;
 
+/**
+ * <p>
+ * Immutable implementation of {@link Entry}
+ * </p>
+ *
+ * @param <K> key type
+ * @param <V> value type
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public class ReadOnlyEntry<K, V> implements Entry<K, V> {
   protected final Entry<K, V> entry;
 
+  /**
+   * <p>
+   * Creates an {@link ReadOnlyEntry} from an {@link Entry}
+   * </p>
+   *
+   * @param entry delegating entry
+   * @since 1.0.0
+   */
   protected ReadOnlyEntry(Entry<K, V> entry) {
     this.entry = entry;
   }
 
+  /**
+   * @return key of the entry
+   * @since 1.0.0
+   */
   @Override
   public K getKey() {
     return this.entry.getKey();
   }
 
+  /**
+   * @return value of the entry
+   * @since 1.0.0
+   */
   @Override
   public V getValue() {
     return this.entry.getValue();
   }
 
+  /**
+   * <p>
+   * Throws an {@link UnsupportedOperationException}, because the value of this entry cannot be changed.
+   * </p>
+   *
+   * @param value ignored value
+   * @return {@code null}
+   * @since 1.0.0
+   */
   @Override
   public V setValue(V value) {
     throw new UnsupportedOperationException();
@@ -72,10 +108,21 @@ public class ReadOnlyEntry<K, V> implements Entry<K, V> {
   @Override
   public String toString() {
     return new StringJoiner(", ", ReadOnlyEntry.class.getSimpleName() + "[", "]")
-        .add("entry=" + this.entry)
-        .toString();
+      .add("entry=" + this.entry)
+      .toString();
   }
 
+  /**
+   * <p>
+   * Invokes constructor {@code ReadOnlyEntry(Entry<K, V> entry)}
+   * </p>
+   *
+   * @param entry delegating entry
+   * @param <K>   key type
+   * @param <V>   value type
+   * @return An immutable entry with the values of the specified entry
+   * @since 1.0.0
+   */
   public static <K, V> ReadOnlyEntry<K, V> of(Entry<K, V> entry) {
     Preconditions.checkNotNull(entry);
     return new ReadOnlyEntry<>(entry);

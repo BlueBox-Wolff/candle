@@ -25,11 +25,36 @@
 
 package de.bluebox.wolff.candle.collection.iterator;
 
+/**
+ * <p>
+ * Resettable implementation of {@link ArrayIterator}
+ * </p>
+ *
+ * @param <E> type of the array
+ * @author Jerome Wolff
+ * @since 1.0.0
+ */
 public class ResettableArrayIterator<E> extends ArrayIterator<E> implements ResettableIterator<E> {
-  protected ResettableArrayIterator(E[] elements) {
-    super(elements);
+  /**
+   * <p>
+   * Creates an {@link ResettableIterator} of an specific array
+   * </p>
+   *
+   * @param array array over which to iterate
+   * @since 1.0.0
+   */
+  protected ResettableArrayIterator(E[] array) {
+    super(array);
   }
 
+  /**
+   * <p>
+   * Resets index of {@link ArrayIterator}
+   * This means that the iteration starts all over again.
+   * </p>
+   *
+   * @since 1.0.0
+   */
   @Override
   public void reset() {
     this.index = 0;
