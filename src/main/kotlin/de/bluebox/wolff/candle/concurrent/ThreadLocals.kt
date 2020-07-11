@@ -24,4 +24,12 @@
  */
 package de.bluebox.wolff.candle.concurrent
 
-class ThreadLocals
+class ThreadLocals private constructor() {
+  companion object {
+    @JvmStatic
+    fun <T> nonNullThreadLocal(defaultValue: T) = NonNullThreadLocal(defaultValue)
+
+    @JvmStatic
+    fun <T> nullableThreadLocal(defaultValue: T? = null) = NullableThreadLocal(defaultValue)
+  }
+}

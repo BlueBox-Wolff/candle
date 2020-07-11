@@ -24,4 +24,14 @@
  */
 package de.bluebox.wolff.candle.concurrent
 
-class NullableThreadLocal
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+
+open class NullableThreadLocal<T> internal constructor(private val defaultValue: T?) : ReadWriteProperty<Any?, T?> {
+  private val threadLocal = ThreadLocal<T>()
+
+  override fun getValue(thisRef: Any?, property: KProperty<*>): T? = this.threadLocal.get()
+    ?: defaultValue
+
+  override fun setValue(thisRef: Any?, property: KProperty<*>, value: T?) = this.threadLocal.set(value)
+}
