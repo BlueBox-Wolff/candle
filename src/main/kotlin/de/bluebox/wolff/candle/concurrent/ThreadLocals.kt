@@ -22,57 +22,14 @@
  * SOFTWARE.
  *
  */
+package de.bluebox.wolff.candle.concurrent
 
-plugins {
-  id 'org.jetbrains.kotlin.jvm' version '1.3.72'
-  id 'java'
-  id 'java-gradle-plugin'
-  id 'idea'
-  id 'eclipse'
+class ThreadLocals private constructor() {
+  companion object {
+    @JvmStatic
+    fun <T> nonNullThreadLocal(defaultValue: T) = NonNullThreadLocal(defaultValue)
+
+    @JvmStatic
+    fun <T> nullableThreadLocal(defaultValue: T? = null) = NullableThreadLocal(defaultValue)
+  }
 }
-
-defaultTasks 'clean', 'build', 'sourcesJar'
-
-def major = 1
-def minor = 0
-def patch = 0
-
-group 'de.bluebox.wolff'
-version "${major}.${minor}.${patch}"
-
-repositories() {
-  mavenCentral()
-  jcenter()
-}
-
-dependencies {
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-  implementation 'com.google.code.findbugs:jsr305:3.0.2'
-
-  testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
-}
-
-sourceCompatibility = 8
-targetCompatibility = 8
-
-compileKotlin {
-  kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-  kotlinOptions.jvmTarget = "1.8"
-}
-
-compileJava {
-  options.encoding = 'UTF-8'
-}
-
-compileTestJava {
-  options.encoding = 'UTF-8'
-}
-
-task sourcesJar(type: Jar) {
-  from sourceSets.main.allJava
-  archiveClassifier.set('sources')
-}
-
-idea.module.inheritOutputDirs = true
