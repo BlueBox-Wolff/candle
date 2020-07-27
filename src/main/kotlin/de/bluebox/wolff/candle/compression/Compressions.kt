@@ -22,12 +22,13 @@
  * SOFTWARE.
  *
  */
-package de.bluebox.wolff.candle.zip
+package de.bluebox.wolff.candle.compression
 
-object ZIPCompressions {
-  private val GZIP_COMPRESSION: ZIPCompression = GZIPCompression()
+object Compressions {
+  private val GZIP_COMPRESSION: Compression = GZIPCompression()
 
-  fun gzipCompression(): ZIPCompression {
+  @JvmStatic
+  fun gzipCompression(): Compression {
     return GZIP_COMPRESSION
   }
 }

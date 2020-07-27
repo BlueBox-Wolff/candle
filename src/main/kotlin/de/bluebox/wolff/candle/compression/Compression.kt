@@ -22,9 +22,9 @@
  * SOFTWARE.
  *
  */
-package de.bluebox.wolff.candle.zip
+package de.bluebox.wolff.candle.compression
 
-interface ZIPCompression {
+interface Compression {
   fun compress(input: ByteArray): ByteArray
 
   fun decompress(input: ByteArray): ByteArray
