@@ -22,7 +22,7 @@ A Library to easily manage topics like concurrency, collections and validations
 
 > Gradle
 ```gradle
-repository {
+repositories {
     maven {
         url "https://repo.spleef.eu/repository/spleef-public/"
     }
