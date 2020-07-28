@@ -39,11 +39,13 @@ public final class AsyncPrintStream extends PrintStream {
   private static final boolean AUTO_FLUSH = true;
   private static final String DEFAULT_CHARSET = StandardCharsets.UTF_8.name();
 
-  private final BlockingQueue<Runnable> queue = new LinkedBlockingQueue<>();
-  private final Thread workerThread = new WorkerThread(this.queue);
+  private final BlockingQueue<Runnable> queue;
+  private final Thread workerThread;
 
   public AsyncPrintStream(OutputStream outputStream) throws UnsupportedEncodingException {
     super(outputStream, AUTO_FLUSH, DEFAULT_CHARSET);
+    this.queue = new LinkedBlockingQueue<>();
+    this.workerThread = new WorkerThread(this.queue);
   }
 
   @Override
