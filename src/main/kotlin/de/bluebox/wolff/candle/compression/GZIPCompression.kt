@@ -22,7 +22,7 @@
  * SOFTWARE.
  *
  */
-package de.bluebox.wolff.candle.zip
+package de.bluebox.wolff.candle.compression
 
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -30,7 +30,7 @@ import java.io.IOException
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
-class GZIPCompression internal constructor() : ZIPCompression {
+class GZIPCompression internal constructor() : Compression {
   override fun compress(input: ByteArray): ByteArray {
     try {
       ByteArrayOutputStream(input.size).use { byteArrayOutputStream ->
