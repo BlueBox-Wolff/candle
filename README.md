@@ -3,5 +3,34 @@
 # candle
 A Library to easily manage topics like concurrency, collections and validations
 
-# Disclaimer
-This Library is still in production.
+# How to use
+>Maven
+```xml
+<repository>
+    <name>spleef-repo</name>
+    <url>https://repo.spleef.eu/repository/spleef-public/</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>de.bluebox.wolff</groupId>
+    <artifactId>candle</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+> Gradle
+```gradle
+repository {
+    maven {
+        url "https://repo.spleef.eu/repository/spleef-public/"
+    }
+}
+```
+
+```gradle
+dependencies {
+    compile group: "de.bluebox.wolff", name: "candle", version: "1.0.0";
+}
+```
