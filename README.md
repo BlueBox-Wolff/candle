@@ -4,7 +4,7 @@
 A Library to easily manage topics like concurrency, collections and validations
 
 # How to use
->Maven
+Maven:
 ```xml
 <repository>
     <name>spleef-repo</name>
@@ -20,7 +20,7 @@ A Library to easily manage topics like concurrency, collections and validations
 </dependency>
 ```
 
-> Gradle
+Gradle:
 ```gradle
 repositories {
     maven {
