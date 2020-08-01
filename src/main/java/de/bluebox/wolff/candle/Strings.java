@@ -40,6 +40,31 @@ public final class Strings {
 
   private Strings() {}
 
+  public static boolean isEmpty(@Nullable String string) {
+    return string == null || string.length() == 0;
+  }
+
+  public static boolean isNotEmpty(@Nullable String string) {
+    return !isEmpty(string);
+  }
+
+  @Nullable
+  public static String emptyToNull(@Nullable String string) {
+    return isEmpty(string) ? null : string;
+  }
+
+  public static String getFirstLetter(String string) {
+    return string.substring(0, 1);
+  }
+
+  public static String firstLetterToLowerCase(String string) {
+    return getFirstLetter(string).toLowerCase() + string.substring(1);
+  }
+
+  public static String firstLetterToUpperCase(String string) {
+    return getFirstLetter(string).toUpperCase() + string.substring(1);
+  }
+
   private static final int DEFAULT_OFFSET = 0;
 
   /**
