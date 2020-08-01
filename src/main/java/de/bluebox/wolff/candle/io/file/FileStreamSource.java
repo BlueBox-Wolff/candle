@@ -23,47 +23,26 @@
  *
  */
 
-package de.bluebox.wolff.candle.io;
+package de.bluebox.wolff.candle.io.file;
 
 import de.bluebox.wolff.candle.Preconditions;
+import de.bluebox.wolff.candle.io.Streams;
 
-import java.io.Closeable;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public final class Streams {
-  private Streams() {}
+public final class FileStreamSource {
+  private static final String DEFAULT_PATH_PREFIX = "classpath:";
 
-  /**
-   * Closes the {@link Closeable} object only if it is not {@code null} This method ignores all
-   * errors
-   *
-   * @param closeable object which should be closed
-   */
-  public static void closeQuietly(Closeable closeable) {
-    if (closeable == null) {
-      return;
+  private FileStreamSource() {}
+
+  public static InputStream getInputStream(String path) throws FileNotFoundException {
+    Preconditions.checkNotNull(path);
+
+    if (!path.startsWith(DEFAULT_PATH_PREFIX)) {
+      return new FileInputStream(path);
     }
-
-    try {
-      closeable.close();
-    } catch (Throwable ignored) {
-    }
-  }
-
-  public static InputStream getClassPathResourceAsStream(String path) {
-    String pathToUse = path.replace("\\", "/");
-
-    if (path.startsWith("/")) {
-      pathToUse = pathToUse.substring(1);
-    }
-    return Preconditions.checkNotNull(getClassPathResourceAsStream0(pathToUse));
-  }
-
-  private static InputStream getClassPathResourceAsStream0(String path) {
-    ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-    return classLoader == null
-        ? ClassLoader.getSystemResourceAsStream(path)
-        : classLoader.getResourceAsStream(path);
+    return Streams.getClassPathResourceAsStream(path.substring(DEFAULT_PATH_PREFIX.length()));
   }
 }
