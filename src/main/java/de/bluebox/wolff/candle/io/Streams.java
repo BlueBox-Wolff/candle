@@ -28,7 +28,6 @@ package de.bluebox.wolff.candle.io;
 import de.bluebox.wolff.candle.Preconditions;
 
 import java.io.Closeable;
-import java.io.IOException;
 import java.io.InputStream;
 
 public final class Streams {
